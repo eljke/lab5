@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <input type="text" id="field1" />
+	<button onclick="clone()">Copy</button><br><br>
+    <input type="text" id="field2" /> 
+    <button onclick="empty()">Clear</button>
+<script>
+	function clone(){
+		let field1 = document.getElementById("field1");
+		let field2 = document.getElementById("field2");
+		if (field1.value) {
+			field2.value = field1.value;
+		} else {
+			alert("Заполните первое поле!")
+		}
+	}
+	function empty() {
+		document.getElementById("field1").value = "";
+		document.getElementById("field2").value = "";
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="field1">
+    <input type="text" id="field2"><br/><br/>
+    <button type="button" id="bttn" onclick="bttn()">Create table</button><br/><br/>
+	<button onclick="window.location.reload()">Clear ALL</button>
+    <div id = "div"></div>
+
+    <script>
+     var row = document.getElementById("field1");
+     var col = document.getElementById("field2");
+     var div = document.getElementById("div");
+
+     function bttn (){
+     if ( row.value * 1  &&  col.value * 1 ){
+        var table = document.createElement("table");
+        div.appendChild(table);
+        for (let i = 0; i < row.value; ++i){
+            var tr = document.createElement("tr");
+            table.appendChild(tr);
+            for (let j = 0; j < col.value; ++j){
+                var td = document.createElement("td");
+                tr.appendChild(td);
+                td.innerHTML = Math.round(Math.random() * 9 + 1);
+            }
+        }
+     }
+     else alert("Only numbers!");
+    }
+    </script>
+
+</body>
+</html>
