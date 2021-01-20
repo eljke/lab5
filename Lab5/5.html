@@ -1,154 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-	<style>
-	*{
-		margin: 3% 7%;
-	}
-	#text{
-		width: 315px;
-		height: 80px;
-		margin-top: 10px;
-		margin-left: 12px;
-		font-size: 50px;
-		border: 3px solid black;
-		text-align: right;
-	}
-	.reset{
-		font-size: 30px;
-		border: 2px solid black;
-		color: Snow;
-		background: #5185cf;
-		text-align: center;
-	}
-	.op{
-		text-align: center;
-		font-size: 30px;
-		border: 2px solid black;
-		background: gray;
-		color: Snow;
-		padding-top: 5px;
-		padding-bottom: 9px;
-		padding-right: 35px;
-		margin-left: -30px;
-		border-radius: 7px;
-	}
-	td{
-		padding-left: 32px;
-		height: 50px;
-		width: 18px;
-		border-radius: 7px;
-		text-align: center;
-	}
-	.result{
-		font-size: 60px;
-		margin-right: 340px;
-	}
-	.bl0{
-		background: silver;
-		padding-top: 1px;
-		padding-left: 150px;
-		padding-bottom: 1px;
-		margin-left: 25%;
-		margin-top: 10px;
-		width: 680px;
-		height: 625px;
-	}
-	
-	.bl2{
-		margin-left: 100px;
-		border: 3px solid black;
-		width: 320px;
-		height: 373px;
-	}
-	th{
-		border-radius: 7px;
-	}
-	span{
-		margin-left: -28px;
-	}
-	.op:hover{
-		opacity: 0.8;
-		cursor: pointer;
-	}
-	.reset:hover{
-		opacity: 0.8;
-		cursor: pointer;
-	}
-    </style>
-</head>
-<body>
-	<div class="bl0">
-	<div class="bl1">
-    <div class="result"><input id="text" type="text" value="" readonly disabled></div>
-    </div>
-	<div class="bl2">
-    <table cellspacing="12px">
-        <tr>
-			<th colspan="3" class="reset" onclick="C()">C</th>
-			<td><span class="op" onclick="inputButton('/')">&nbsp;/</span></td> 
-		</tr>
-        <tr> 
-			<td><span class="op" onclick="inputButton('7')">7</span></td> 
-			<td><span class="op" onclick="inputButton('8')">8</span></td> 
-            <td><span class="op" onclick="inputButton('9')">9</span></td>
-			<td><span class="op" onclick="inputButton('*')">х</span></td>
-		</tr>
-        <tr> 
-			<td><span class="op" onclick="inputButton('4')">4</span></td>
-			<td><span class="op" onclick="inputButton('5')">5</span></td> 
-			<td><span class="op" onclick="inputButton('6')">6</span></td>
-			<td><span class="op" onclick="inputButton('-')">&nbsp;-</span></td> 
-		</tr>
-        <tr> 
-			<td><span class="op" onclick="inputButton('1')">1</span></td>
-			<td><span class="op" onclick="inputButton('2')">2</span></td> 
-			<td><span class="op" onclick="inputButton('3')">3</span></td>
-			<td><span class="op" onclick="inputButton('+')">+</span></td> 
-		</tr>
-        <tr> 
-			<th colspan="3" class="reset" style="background: gray" onclick="inputButton('0')">0</th> 
-			<td class="reset" style="background: green" onclick="Q()"><span>=</span></td> 
-		</tr>
-    </table>
-    </div>
-	</div>
-<script>
-	   var a = 0;
-	   var op = 0;
-	   var text = document.getElementById("text");
-	   function inputButton (n){
-		   if ((n == "-" || n == "/" || n == "*" || n == "+") && (!op)){
-		   text.value = text.value + n;
-		   a = n;
-		   ++op;
-		   }
-		   else{
-			   if (!(n == "-" || n == "/" || n == "*" || n == "+")){
-				text.value = text.value + n;
-				a = n;
-			   }
-		   }
-	   }
-	   function C (){
-		   text.value = "";
-		   op = 0;
-	   }
-	   function Q (){
-		op = 0;
-		   if (a == 0) text.value = "ERROR";
-		   else {
-			   if (text.value[0] == 0 || text.value[0] == "/" || text.value[0] == "*" || text.value[0] == "+" || text.value[0] == "-")  
-			   text.value = "ERROR";
-			   else {
-				  text.value = eval(text.value);
-			   }
-		   }
-	   }
-</script>
-
-</body>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <title>Task5</title>
+        <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .calculator input, .calc-button {
+            font-family: Arial, serif;
+        }
+        body {
+            background: gray;
+            padding-bottom: 30px;
+            padding-top: 30px;
+        }
+        .calculator {
+            max-width: 400px;
+            margin: 0 auto;
+            border: 2px solid #111;
+            border-radius: 5px;
+        }
+        .calculator input {
+            background: none;
+            border: none;
+            box-shadow: none;
+            outline: none;
+            padding: 20px 10px;
+            width: 100%;
+            border-bottom: 2px solid #111;
+            color: black;
+            text-align: right;
+            font-size: 40px;
+            border-radius: 0;
+        }
+        .calc-button {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #111;
+            padding: 20px;
+            color: #eee;
+            border-radius: 5px;
+            font-size: 22px;
+            cursor: pointer;
+        }
+        .calculator-buttons {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-gap: 15px;
+        }
+        .is-zero, .is-clear {
+            grid-column: span 3;
+        }
+        .is-clear {
+            background: #3572DB;
+        }
+        .is-equals {
+            background: #28D060;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="calculator">
+            <input id="text" type="text" value="" readonly disabled>
+            <div class="calculator-buttons">
+                <button class="calc-button is-clear" onclick="Clear()">C</button>
+                <button class="calc-button" onclick="Enter('/')">/</button>
+                <button class="calc-button" onclick="Enter('7')">7</button>
+                <button class="calc-button" onclick="Enter('8')">8</button>
+                <button class="calc-button" onclick="Enter('9')">9</button>
+                <button class="calc-button" onclick="Enter('*')">*</button>
+                <button class="calc-button" onclick="Enter('4')">4</button>
+                <button class="calc-button" onclick="Enter('5')">5</button>
+                <button class="calc-button" onclick="Enter('6')">6</button>
+                <button class="calc-button" onclick="Enter('-')">-</button>
+                <button class="calc-button" onclick="Enter('1')">1</button>
+                <button class="calc-button" onclick="Enter('2')">2</button>
+                <button class="calc-button" onclick="Enter('3')">3</button>
+                <button class="calc-button" onclick="Enter('+')">+</button>
+                <button class="calc-button is-zero" onclick="Enter('0')">0</button>
+                <button class="calc-button is-equals" onclick="Equal()">=</button>
+            </div>
+        </div>
+        <script>
+            var a = 0, operation = 0;
+            var text = document.getElementById("text");
+            function Enter (n){
+                if ((n == "-" || n == "/" || n == "*" || n == "+") && (!operation)){
+                text.value = text.value + n;
+                a = n;
+                ++operation;
+                }
+                else{
+                   if (!(n == "-" || n == "/" || n == "*" || n == "+")){
+                    text.value = text.value + n;
+                    a = n;
+                   }
+               }
+            }
+            function Clear (){
+               text.value = "";
+               operation = 0;
+            }
+            function Equal (){
+            operation = 0;
+               if (a == 0) text.value = "ERROR";
+               else {
+                   if (text.value[0] == 0 || text.value[0] == "/" || text.value[0] == "*" || text.value[0] == "+" || text.value[0] == "-")  
+                   text.value = "ERROR";
+                   else {
+                      text.value = eval(text.value);
+                   }
+               }
+           }
+        </script>
+    </body>
 </html>
-
