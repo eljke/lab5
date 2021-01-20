@@ -89,40 +89,40 @@ button:active {
   <script>
 	let operand = 0;
 	let state = "";
-
+	const display = document.getElementById("display");
+	let flag = false;
 	function clr() {
-		document.getElementById("display").value = 0;
+		display.value = 0;
 	}
 	function add(num) {
-		display = document.getElementById("display")
-		if (display.value == "0") {
+		if (display.value == "0" || flag) {
 			display.value = num;
+			flag = false;
 		} else {
 			display.value += num;
 		}
 	}
 	function change_state(new_state) {
-		operand = Number(document.getElementById("display").value);
+		operand = new Number(document.getElementById("display").value);
 		state = new_state;
-		clr();
+		flag = true;
 	}
 	function calc() {
-		display = document.getElementById("display")
 		switch (state) {
 			case '+':
-				display.value = operand + Number(display.value);
+				display.value = operand + new Number(display.value);
 				break;
 			case '-':
-				display.value = operand - Number(display.value);
+				display.value = operand - new Number(display.value);
 				break;
 			case '*':
-				display.value = operand * Number(display.value);
+				display.value = operand * new Number(display.value);
 				break;
 			case '/':
 				if (display.value == '0') {
 					alert("На ноль делить нельзя!");
 				} else {
-					display.value = operand / Number(display.value);
+					display.value = operand / new Number(display.value);
 				}
 				break;
 		}
